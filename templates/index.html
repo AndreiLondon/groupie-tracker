@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Artists</title>
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+
+  <div id="search-container"> 
+  <form action="/search" method="post">
+  <input list="artists" name="artist" id="search">
+  <datalist id="artists">
+    {{range .}}  
+        <option value="{{.Name}}">      
+    {{end}}
+  </datalist>
+  <input type="image" id="search-button" src="static/images/glass.png">
+  </form>
+  </div>
+
+  <section id="container">
+    <div class="card-container">
+      {{range .}}
+      <div class="card" onclick="location.href='{{.ID}}';"  tabindex="0">
+        <img src="{{.Image}}" />
+        <div class="content">
+          <h3>{{.Name}}</h3>
+          <p>Est. {{.CreationDate}}</p>
+        </div>
+      </div>
+      {{end}}
+    </div>
+  </section>
+
+  <script>
+    var input = document.activeElement;
+    input.addEventListener("keypress", function(event) {
+    if (event.key === "Enter") {
+      document.activeElement.click();
+    }
+  });
+  </script>
+
+</body>
+</html>

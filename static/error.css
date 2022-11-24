@@ -1,0 +1,7 @@
+html {   
+    min-height: 100%;
+    background-image: url(images/background50.jpg);
+    background-size: cover;
+  }
+  H1 { text-align: center }
+  H3 { text-align: center }
